@@ -71,7 +71,7 @@ const ChatContainer = () => {
                 {formatMessageTime(message.createdAt)}
               </time>
             </div>
-            <div className="chat-bubble flex flex-col">
+            <div className={`chat-bubble flex flex-col ${message.senderId === authUser._id ? "chat-bubble-primary" : "chat-bubble-neutral"}`}>
               {message.image && (
                 <img
                   src={message.image}

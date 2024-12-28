@@ -69,9 +69,10 @@ const ProfilePage = () => {
             <div className="space-y-1.5">
               <div className="text-sm text-zinc-400 flex items-center gap-2">
                 <User className="w-4 h-4" />
-                Full Name
+                Full Name 
               </div>
               <p className="px-4 py-2.5 bg-base-200 rounded-lg border">{authUser?.fullName}</p>
+              <div className="italic opacity-50 text-sm">"This field is read-only and cannot be edited."</div>
             </div>
 
             <div className="space-y-1.5">
@@ -80,6 +81,7 @@ const ProfilePage = () => {
                 Email Address
               </div>
               <p className="px-4 py-2.5 bg-base-200 rounded-lg border">{authUser?.email}</p>
+              <div className="italic opacity-50 text-sm">"This field is read-only and cannot be edited."</div>
             </div>
           </div>
 
