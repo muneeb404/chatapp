@@ -13,6 +13,7 @@ import {Loader} from "lucide-react"
 import { Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { useThemeStore } from "./store/useThemeStore.js";
+import Chatbot from "./pages/Chatbot.jsx";
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/" />} />
         <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/" />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/chatbot" element={<Chatbot/>} />
         <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to="/login" />} />
       </Routes>
 
