@@ -63,7 +63,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className="overflow-y-auto flex-grow w-full py-3">
+      <div className="overflow-y-auto flex-grow w-full">
         {filteredUsers.map((user) => (
           <button
             key={user._id}

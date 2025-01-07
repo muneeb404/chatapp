@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
-import { LogOut, MessageSquare, Settings, User, Bot } from "lucide-react";
+import { LogOut, MessageSquare, Settings, User, Bot } from 'lucide-react';
 
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
+  const location = useLocation();
 
   return (
     <header
@@ -22,16 +23,23 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <Link
-              to={"/chatbot"}
-              className={`
-              btn btn-sm gap-2 transition-colors
-              
-              `}
-            >
-              <Bot className="w-4 h-4" />
-              <span className="hidden sm:inline">AI Chatbot</span>
-            </Link>
+            {location.pathname === "/chatbot" ? (
+              <Link
+                to="/"
+                className="btn btn-sm gap-2 transition-colors"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span className="hidden sm:inline">Return to Chat</span>
+              </Link>
+            ) : (
+              <Link
+                to="/chatbot"
+                className="btn btn-sm gap-2 transition-colors"
+              >
+                <Bot className="w-4 h-4" />
+                <span className="hidden sm:inline">AI Chatbot</span>
+              </Link>
+            )}
             <Link
               to={"/settings"}
               className={`
@@ -62,4 +70,5 @@ const Navbar = () => {
     </header>
   );
 };
+
 export default Navbar;
