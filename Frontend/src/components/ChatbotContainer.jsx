@@ -152,7 +152,7 @@ function ChatbotContainer() {
               </div>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-base-content">MunaAI</h3>
+              <h3 className="text-lg font-semibold text-base-content">GenieAI</h3>
               <p className="text-sm text-base-content/70">Always here to assist you.</p>
             </div>
           </div>

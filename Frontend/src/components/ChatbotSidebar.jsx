@@ -10,7 +10,7 @@ function ChatbotSidebar() {
             <div className="border-b border-base-300 w-full p-4 lg:p-5">
                 <div className="flex items-center gap-3">
                     <Bot className="w-8 h-8" />
-                    <span className="font-medium text-lg hidden lg:block">MunaAI Assistant</span>
+                    <span className="font-medium text-lg hidden lg:block">GenieAI Assistant</span>
                 </div>
                 
                 <div className="mt-3 hidden lg:block">
@@ -36,7 +36,7 @@ function ChatbotSidebar() {
                     </div>
     
                     <div className="hidden lg:block text-left min-w-0">
-                        <div className="font-medium truncate">MunaAI</div>
+                        <div className="font-medium truncate">GenieAI</div>
                         <div className="text-sm text-base-content/70">
                             Always here to assist you.
                         </div>
@@ -46,7 +46,7 @@ function ChatbotSidebar() {
 
             <div className="border-t border-base-300 p-4 hidden lg:block">
                 <p className="text-xs text-base-content/50 text-center">
-                    © 2023 MunaAI. All rights reserved.
+                    © 2023 GenieAI. All rights reserved.
                 </p>
             </div>
         </aside>
