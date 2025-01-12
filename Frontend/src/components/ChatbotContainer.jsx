@@ -1,4 +1,4 @@
-import { Bot, Send, X, Loader, Trash2, Copy, Mic } from 'lucide-react';
+import { Bot, Send, X, Loader, Trash2, Copy, Mic, Menu } from 'lucide-react';
 import React, { useState, useRef, useEffect } from "react";
 import { useChatStore } from "../store/useChatStore";
 import axios from "axios";
@@ -146,6 +146,9 @@ function ChatbotContainer() {
       <div className="p-4 border-b border-base-300 bg-base-100">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
+            {/* <button className="lg:hidden btn btn-ghost btn-circle" onClick={() => setSelectedBot(null)}>
+              <X size={20} />
+            </button> */}
             <div className="avatar">
               <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-content">
                 <Bot className="w-full h-full p-1" />
@@ -167,7 +170,7 @@ function ChatbotContainer() {
             <button
               onClick={() => setSelectedBot(null)}
               aria-label="Close Chat"
-              className="btn btn-ghost btn-circle text-base-content"
+              className="hidden lg:flex btn btn-ghost btn-circle text-base-content"
             >
               <X size={20} />
             </button>
