@@ -46,7 +46,7 @@ function ChatbotSidebar() {
 
             <div className="border-t border-base-300 p-4 hidden lg:block">
                 <p className="text-xs text-base-content/50 text-center">
-                    © 2023 GenieAI. All rights reserved.
+                    © {new Date().getFullYear()} ChatGenie. All rights reserved.
                 </p>
             </div>
         </aside>
