@@ -34,7 +34,7 @@ const Navbar = () => {
             ) : (
               <Link
                 to="/chatbot"
-                className="btn btn-sm gap-2 transition-colors"
+                className="btn btn-sm gap-2 max-[370px]:px-2 transition-colors"
               >
                 <Bot className="w-4 h-4" />
                 <span className="hidden sm:inline">AI Chatbot</span>
@@ -43,7 +43,7 @@ const Navbar = () => {
             <Link
               to={"/settings"}
               className={`
-              btn btn-sm gap-2 transition-colors
+              btn btn-sm gap-2 max-[370px]:px-2 transition-colors
               
               `}
             >
@@ -53,13 +53,13 @@ const Navbar = () => {
 
             {authUser && (
               <>
-                <Link to={"/profile"} className={`btn btn-sm gap-2`}>
+                <Link to={"/profile"} className={`btn btn-sm gap-2 max-[370px]:px-2`}>
                   <User className="size-4" />
                   <span className="hidden sm:inline">Profile</span>
                 </Link>
 
-                <button className="flex btn btn-sm gap-2 items-center btn-error btn-outline" onClick={logout}>
-                  <LogOut className="size-5" />
+                <button className="flex btn btn-sm gap-2 max-[370px]:px-2 items-center btn-error btn-outline" onClick={logout}>
+                  <LogOut className="size-4" />
                   <span className="hidden sm:inline">Logout</span>
                 </button>
               </>

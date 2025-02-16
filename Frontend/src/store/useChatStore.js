@@ -9,6 +9,7 @@ export const useChatStore = create(
     (set, get) => ({
       messages: [],
       users: [],
+      favoriteUsers: [],
       selectedUser: null,
       selectedBot: false,
       isUsersLoading: false,
@@ -25,7 +26,7 @@ export const useChatStore = create(
           const res = await axiosInstance.get("/messages/users");
           set({ users: res.data });
         } catch (error) {
-          toast.error(error.response.data.message);
+          toast.error(error.response?.data?.message || "Error fetching users");
         } finally {
           set({ isUsersLoading: false });
         }
@@ -36,19 +37,18 @@ export const useChatStore = create(
         try {
           const res = await axiosInstance.get(`/messages/${userId}`);
           set({ messages: res.data });
-          // Clear notification and unread messages for this user when messages are fetched
-          set(state => ({
+          set((state) => ({
             newMessageNotifications: {
               ...state.newMessageNotifications,
-              [userId]: false
+              [userId]: false,
             },
             unreadMessages: {
               ...state.unreadMessages,
-              [userId]: []
-            }
+              [userId]: [],
+            },
           }));
         } catch (error) {
-          toast.error(error.response.data.message);
+          toast.error(error.response?.data?.message || "Error fetching messages");
         } finally {
           set({ isMessagesLoading: false });
         }
@@ -103,22 +103,18 @@ export const useChatStore = create(
         socket.off("newMessage");
       },
 
-      setSelectedUser: (selectedUser) => set(state => {
-        if (selectedUser === null) {
-          return { selectedUser: null };
-        }
-        return { 
+      setSelectedUser: (selectedUser) =>
+        set((state) => ({
           selectedUser,
           newMessageNotifications: {
             ...state.newMessageNotifications,
-            [selectedUser._id]: false
+            [selectedUser?._id]: false,
           },
           unreadMessages: {
             ...state.unreadMessages,
-            [selectedUser._id]: []
-          }
-        };
-      }),
+            [selectedUser?._id]: [],
+          },
+        })),
 
       clearAllNotifications: () => set({ 
         newMessageNotifications: {},
@@ -128,6 +124,17 @@ export const useChatStore = create(
       getUnreadMessageCount: (userId) => {
         const { unreadMessages } = get();
         return unreadMessages[userId]?.length || 0;
+      },
+
+      toggleFavoriteUser: (user) => {
+        set((state) => {
+          const isFavorite = state.favoriteUsers.some((u) => u._id === user._id);
+          return {
+            favoriteUsers: isFavorite
+              ? state.favoriteUsers.filter((u) => u._id !== user._id)
+              : [...state.favoriteUsers, user],
+          };
+        });
       },
 
       setOnline: async () => {
